@@ -3,6 +3,7 @@ import React from 'react'
 const Toolbar = ({
   messages,
   toggleSelectAll,
+  toggleCompose,
   markAsRead,
   markAsUnread,
   applyLabel,
@@ -33,6 +34,10 @@ const Toolbar = ({
           </span>
           unread {unreadCount === 1 ? 'message' : 'messages'}
         </p>
+
+        <button className="btn btn-danger" onClick={toggleCompose}>
+          <i className={`fa fa-plus`}></i>
+        </button>
 
         <button className="btn btn-default" onClick={toggleSelectAll}>
           <i className={`fa ${selectAllClass}`}></i>

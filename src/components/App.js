@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Toolbar from './Toolbar'
 import Messages from './Messages'
+import ComposeMessage from './ComposeMessage'
 import '../App.css';
 
 class App extends Component {
@@ -60,6 +61,10 @@ class App extends Component {
     })
   }
 
+  toggleCompose() {
+      this.setState({composing: !this.state.composing})
+    }
+
   applyLabel(label) {
     const messages = this.state.messages.map(message => (
       message.selected && !message.labels.includes(label) ?
@@ -110,9 +115,16 @@ class App extends Component {
             markAsUnread={this.markAsUnread.bind(this)}
             deleteMessages={this.deleteMessages.bind(this)}
             toggleSelectAll={this.toggleSelectAll.bind(this)}
+            toggleCompose={this.toggleCompose.bind(this)}
             applyLabel={this.applyLabel.bind(this)}
             removeLabel={this.removeLabel.bind(this)}
             />
+            {
+              this.state.composing ?
+                <ComposeMessage  /> :
+                null
+            }
+
           <Messages
             messages={this.state.messages}
             toggleSelect={this.toggleSelect.bind(this)}

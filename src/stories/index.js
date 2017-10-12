@@ -73,7 +73,6 @@ const messages = [
 ]
 
 storiesOf('Inbox', module)
-.add('Message', () => <Message message={ messages }  />)
-.add('Messages', () => <Messages messages={ messages } />)
 .add('Toolbar', () => <Toolbar messages={ messages } />)
+.add('Messages', () => <Messages messages={ messages } />)
 .add('App', () => <App messages={ messages } />)
