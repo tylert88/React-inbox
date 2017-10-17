@@ -1,9 +1,16 @@
 import React from 'react'
 
-const ComposeMessage = () => {
+const ComposeMessage = ({ people, sendMessage }) => {
+  const submitForm = (e) => {
+    e.preventDefault()
+    sendMessage({
+      subject: e.target.subject.value,
+      body: e.target.body.value,
+    })
+  }
 
   return (
-    <form class="form-horizontal well">
+    <form class="form-horizontal well" onSubmit={submitForm}>
   <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
       <h4>Compose Message</h4>

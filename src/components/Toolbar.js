@@ -2,14 +2,15 @@ import React from 'react'
 
 const Toolbar = ({
   messages,
-  toggleSelectAll,
   toggleCompose,
+  toggleSelectAll,
   markAsRead,
   markAsUnread,
   applyLabel,
   removeLabel,
   deleteMessages,
 }) => {
+
   const unreadCount = messages.filter(message => !message.read).length
   const selectedCount = messages.filter(message => message.selected).length
   let selectAllClass
@@ -35,19 +36,27 @@ const Toolbar = ({
           unread {unreadCount === 1 ? 'message' : 'messages'}
         </p>
 
-        <button className="btn btn-danger" onClick={toggleCompose}>
+        <button
+          className="btn btn-danger" onClick={toggleCompose}>
           <i className={`fa fa-plus`}></i>
         </button>
 
-        <button className="btn btn-default" onClick={toggleSelectAll}>
+        <button
+          className="btn btn-default" onClick={toggleSelectAll}>
           <i className={`fa ${selectAllClass}`}></i>
         </button>
 
-        <button className="btn btn-default" onClick={markAsRead} disabled={selectedCount === 0}>
+        <button
+          className="btn btn-default"
+          onClick={markAsRead}
+          disabled={selectedCount === 0}>
           Mark As Read
         </button>
 
-        <button className="btn btn-default" onClick={markAsUnread} disabled={selectedCount === 0}>
+        <button
+          className="btn btn-default"
+          onClick={markAsUnread}
+          disabled={selectedCount === 0}>
           Mark As Unread
         </button>
 
@@ -73,7 +82,10 @@ const Toolbar = ({
           <option value="gschool">gschool</option>
         </select>
 
-        <button className="btn btn-default" onClick={deleteMessages} disabled={selectedCount === 0}>
+        <button
+          className="btn btn-default"
+          onClick={deleteMessages}
+          disabled={selectedCount === 0}>
           <i className="fa fa-trash-o"></i>
         </button>
       </div>

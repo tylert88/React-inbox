@@ -7,6 +7,7 @@ const Messages = ({
   toggleSelect,
   toggleStar,
 }) => {
+  
   const messageComponents = messages.map(message => (
     <Message
       key={message.id}
