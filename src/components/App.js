@@ -3,28 +3,7 @@ import Toolbar from './Toolbar'
 import Messages from './Messages'
 import ComposeMessage from './ComposeMessage'
 import '../App.css';
-// state = {
-//   messages: []
-// }
-//
-// async componentDidMount() {
-//   const messages = await this.getMessages()
-//   const messagesById = messages.reduce((result, message) => {
-//     result[message.id] = message
-//     return result
-//   }, {})
-//
-//   this.setState({
-//      messages: messages.map(message => ({ ...message })),
-//   })
-// }
-//
-// // FETCH ALL MESSAGES
-// async getMessages() {
-//   const response = await fetch('http://localhost:8082/api/messages')
-//   const json = await response.json()
-//   return json._embedded.messages
-// }
+
 
 class App extends Component {
 
