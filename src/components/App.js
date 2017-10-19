@@ -12,11 +12,14 @@ class App extends Component {
       this.state = { messages: [] }
     }
 
-    async componentDidMount() {
-      const response = await this.request(`/api/messages`)
-      const json = await response.json()
-      this.setState({messages: json._embedded.messages})
-    }
+
+// LOADS THE DATA FROM THE API ENDPOINT (INVOKED IMMEDIATELY AFTER A COMPONENT IS MOUNTED)
+  async componentDidMount() {
+    const response = await this.request(`/api/messages`)
+    const json = await response.json()
+    this.setState({messages: json._embedded.messages})
+  }
+// --------------------------------------------------------------------------------------------------------
 
 
 // MASTER UTILITY TO TOGGLE CLICK EVENTS
@@ -53,6 +56,8 @@ class App extends Component {
 
 
 // SHOW THE MOST UPDATED DATA FOR MESSAGES
+// THIS WILL PASS IN NEW ARGUMENTS TO THE 'REQUEST' COMPONENT ('PATH', 'METHOD', 'BODY')
+// the payload is the part of transmitted data that is the actual intended message
  async updateMessages(payload) {
    await this.request('/api/messages', 'PATCH', payload)
  }
@@ -109,11 +114,13 @@ class App extends Component {
 // DELETE MESSAGES
   async deleteMessages() {
     await this.updateMessages({
+      // FIND THE MESSAGE THAT WAS SELECTED, THEN FIND THAT MESSAGES ID
       "messageIds": this.state.messages.filter(message => message.selected).map(message => message.id),
       "command": "delete"
     })
-
+    // SET A VARIABLE TO EQUAL THE LIST OF MESSAGES MINUS THE ONE THAT IS SELECTED
     const messages = this.state.messages.filter(message => !message.selected)
+    // UPDATE THE STATE TO SHOW ALL MESSAGES MINUS THE ONE SELECTED
     this.setState({ messages })
   }
 // --------------------------------------------------------------------------------------------------------
@@ -185,13 +192,21 @@ class App extends Component {
 
 // SEND A NEW MESSAGE
   async sendMessage(message) {
+    // THIS WILL PASS IN NEW ARGUMENTS TO THE 'REQUEST' COMPONENT ('PATH', 'METHOD', 'BODY')
       const response = await this.request('/api/messages', 'POST', {
         subject: message.subject,
         body: message.body,
       })
+
+      // THIS WILL CONVERT THE NEW MESSAGE TO JSON
       const newMessage = await response.json()
 
+      // THIS WILL SET A VARIABLE TO EQUAL THE CURRENT MESSAGES, AND
+      // THE NEW FORMATED MESSAGE THAT WAS COMPOSED IN THE FORM
       const messages = [...this.state.messages, newMessage]
+
+      // THIS WILL UPDATE THE 'STATE' OF MESSAGES TO SHOW THE CURRENT MESSAGES AND
+      // THE NEW MESSAGE THAT WAS CREATED. AS WELL AS TOGGLE 'OFF' THE COMPOSE NEW MESSAGE COMPONENT
       this.setState({
         messages,
         composing: false,
