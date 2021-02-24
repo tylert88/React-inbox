@@ -1,4 +1,4 @@
-## View the React-Inbox Demo [Here](https://radiant-badlands-90277.herokuapp.com/)
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
