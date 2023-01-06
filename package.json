@@ -10,7 +10,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-materialize": "^1.0.15",
-    "react-scripts": "1.0.14"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,7 +20,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@storybook/react": "^3.2.12"
+    "@storybook/react": "^6.5.15"
   },
   "proxy": "http://localhost:8082"
 }
